@@ -27,10 +27,10 @@ dude3.Reward(2);
 dude3.Reward(8);
 dude3.Reward(9);
 
-var sortedDudes = dudes.OrderByDescending(o => o.totalScore).ToList();
+var sortedDudes = dudes.OrderByDescending(o => o.TotalScore).ToList();
 
 
-Console.WriteLine($"The employee of the week is {sortedDudes[0].Title} {sortedDudes[0].Name} {sortedDudes[0].Surname}, which scored {sortedDudes[0].totalScore} points total. Congratulations!");
+Console.WriteLine($"The employee of the week is {sortedDudes[0].Title} {sortedDudes[0].Name} {sortedDudes[0].Surname}, which scored {sortedDudes[0].TotalScore} points total. Congratulations!");
 
 
 
