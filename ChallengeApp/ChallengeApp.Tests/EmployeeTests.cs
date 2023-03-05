@@ -26,10 +26,10 @@
             var rysiek2 = new Employee("Ryszarda", "Emplojewska", 22, "f");
             var rysiek3 = new Employee("Ryszarda", "Emplojewska", 22, "Female");
             var rysiek4 = new Employee("Ryszarda", "Emplojewska", 22, "female");
-            var rysiek5 = new Employee("Ryszard", "Emplojewska", 22, "M");
-            var rysiek6 = new Employee("Ryszard", "Emplojewska", 22, "m");
-            var rysiek7 = new Employee("Ryszard", "Emplojewska", 22, "Male");
-            var rysiek8 = new Employee("Ryszard", "Emplojewska", 22, "male");
+            var rysiek5 = new Employee("Ryszard", "Emplojewski", 22, "M");
+            var rysiek6 = new Employee("Ryszard", "Emplojewski", 22, "m");
+            var rysiek7 = new Employee("Ryszard", "Emplojewski", 22, "Male");
+            var rysiek8 = new Employee("Ryszard", "Emplojewski", 22, "male");
 
             // act
             var result1 = rysiek1.Title;
@@ -55,29 +55,28 @@
         [Test]
         public void WhenEmployeeCollectsReward_ShouldReturnTotalScore()
         {
-            //Assert.Pass();
-
             // arrange
             var rysiek = new Employee("Ryszard", "Emplojewski", 22, "M");
             rysiek.Reward(5);
             rysiek.Reward(6);
+            rysiek.Reward(-7);
+
             // act
             var result = rysiek.TotalScore;
 
             // assert
-            Assert.AreEqual(11, result);
+            Assert.AreEqual(4, result);
         }
 
         [Test]
         public void WhenEmployeeCollectsPenalty_ShouldSubtractItFromTotalScore()
         {
-            //Assert.Pass();
-
             // arrange
             var rysiek = new Employee("Ryszard", "Emplojewski", 22, "M");
             rysiek.Reward(5);
             rysiek.Penalize(6);
             rysiek.Penalize(-6);
+
             // act
             var result = rysiek.TotalScore;
 
