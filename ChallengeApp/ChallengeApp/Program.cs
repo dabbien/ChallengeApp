@@ -10,23 +10,23 @@ dudes.Add(dude1);
 dudes.Add(dude2);
 dudes.Add(dude3);
 
-dude1.Reward(10);
-dude1.Reward(6);
-dude1.Reward(2);
-dude1.Reward(8);
-dude1.Reward(7);
+dude1.Reward(-10);
+dude1.Reward(-6);
+dude1.Reward(-2);
+dude1.Reward(-8);
+dude1.Reward(-7);
 
-dude2.Reward(10);
-dude2.Reward(6);
-dude2.Reward(2);
-dude2.Reward(8);
-dude2.Reward(7);
+dude2.Reward(-10);
+dude2.Reward(-6);
+dude2.Reward(-2);
+dude2.Reward(-8);
+dude2.Reward(-7);
 
-dude3.Reward(10);
-dude3.Reward(6);
-dude3.Reward(2);
-dude3.Reward(8);
-dude3.Reward(7);
+dude3.Reward(-10);
+dude3.Reward(-6);
+dude3.Reward(-2);
+dude3.Reward(-8);
+dude3.Reward(-7);
 
 dudes = dudes.OrderByDescending(o => o.TotalScore).ToList();
 
@@ -42,15 +42,15 @@ for (int j = 0; j <= i; j++)
 {
     if (j == 0)
     {
-        winners += $"{dudes[0].Title} {dudes[0].Name} {dudes[0].Surname}";
+        winners += $"{dudes[0].Title}{dudes[0].Name} {dudes[0].Surname}";
     }
     else if (j == i)
     {
-        winners += $" and {dudes[j].Title} {dudes[j].Name} {dudes[j].Surname}";
+        winners += $" and {dudes[j].Title}{dudes[j].Name} {dudes[j].Surname}";
     }
     else
     {
-        winners += $", {dudes[j].Title} {dudes[j].Name} {dudes[j].Surname}";
+        winners += $", {dudes[j].Title}{dudes[j].Name} {dudes[j].Surname}";
     }
 }
 
