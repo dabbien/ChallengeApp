@@ -2,7 +2,6 @@
 {
     public class TypeTests
     {
-
         [Test]
         public void UserLoginValueTypeIsString()
         {
@@ -64,6 +63,5 @@
         {
             return new User(login, password, intValue, floatValue, editable);
         }
-
     }
 }

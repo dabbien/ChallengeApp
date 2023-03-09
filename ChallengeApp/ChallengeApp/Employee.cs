@@ -39,7 +39,6 @@
         public int Age { get; private set; }
         public string? Sex { get; private set; }
         public string? Title { get; private set; }
-
         public int TotalScore
         {
             get
@@ -59,7 +58,6 @@
             {
                 number = number * (-1);
             }
-
             this.points.Add(number);
         }
     }
