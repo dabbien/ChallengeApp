@@ -33,7 +33,7 @@
         }
 
         [Test]
-        public void GetUserReturnsDifferentObjectReferencesForNewInstances()
+        public void GetUserReturnsDifferentReferencesForNewObjects()
         {
             // arrange
             var user1 = GetUser("Bartek", "qwerty");
