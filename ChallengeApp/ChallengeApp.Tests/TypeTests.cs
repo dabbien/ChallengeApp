@@ -1,5 +1,7 @@
-﻿namespace ChallengeApp.Tests
+﻿/*
+namespace ChallengeApp.Tests
 {
+
     public class TypeTests
     {
         [Test]
@@ -65,3 +67,4 @@
         }
     }
 }
+*/

@@ -9,8 +9,14 @@
             this.Surname = surname;
         }
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
+        public Employee()
+        {
+            this.Name = null;
+            this.Surname = null;
+        }
+
+        public string? Name { get; private set; }
+        public string? Surname { get; private set; }
         public float Result
         {
             get
@@ -39,20 +45,56 @@
             }
             else
             {
-                Console.WriteLine("Given string is not a float");
+               grade = grade.ToUpper();
+
+                switch (grade)
+                {
+                    case "A":
+                        this.grades.Add(100);
+                        break;
+                    case "B":
+                        this.grades.Add(80);
+                        break;
+                    case "C":
+                        this.grades.Add(60);
+                        break;
+                    case "D":
+                        this.grades.Add(40);
+                        break;
+                    case "E":
+                        this.grades.Add(20);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid score value, only A-E and numerical values allowed.");
+                        break;
+                }
             }
         }
 
         public void AddGrade(char grade)
         {
-            if (char.IsDigit(grade))
+            grade = char.ToUpper(grade);
+
+            switch (grade)
             {
-                float result = Convert.ToSingle(grade);
-                this.AddGrade(result);
-            }
-            else
-            {
-                Console.WriteLine($"Character {grade} is not a digit");
+                case 'A':
+                    this.grades.Add(100);
+                    break;
+                case 'B':
+                    this.grades.Add(80);
+                    break;
+                case 'C':
+                    this.grades.Add(60);
+                    break;
+                case 'D':
+                    this.grades.Add(40);
+                    break;
+                case 'E':
+                    this.grades.Add(20);
+                    break;
+                default:
+                    Console.WriteLine("Invalid score value, only A-E and numerical values allowed.");
+                    break;
             }
         }
 
@@ -100,8 +142,25 @@
                 statistics.Average /= this.grades.Count;
             }
 
+            switch(statistics.Average)
+            {
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
+            }
             return statistics;
         }
-
     }
 }
