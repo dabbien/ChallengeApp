@@ -4,14 +4,13 @@ var employee = new Employee("Bogdan", "Bogdanowski");
 employee.AddGrade(200);
 employee.AddGrade(3);
 employee.AddGrade(4);
-var statistics = employee.GetStatistics();
-Console.WriteLine($"Average: {statistics.Average:N2}");
-Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine($"Min: {statistics.Min}");
+var statistics1 = employee.GetStatisticsWithForeach();
+var statistics2 = employee.GetStatisticsWithFor();
+var statistics3 = employee.GetStatisticsWithWhile();
+var statistics4 = employee.GetStatisticsWithDoWhile();
+Console.WriteLine($"Average-foreach: {statistics1.Average:N2}");
+Console.WriteLine($"Average-for: {statistics2.Average:N2}");
+Console.WriteLine($"Average-while: {statistics3.Average:N2}");
+Console.WriteLine($"Average-doWhile: {statistics4.Average:N2}");
 
-SetSth(out statistics);
 
-void SetSth(out Statistics statistics)
-{
-    statistics = new Statistics();
-}
