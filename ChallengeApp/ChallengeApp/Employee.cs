@@ -21,19 +21,57 @@
 
         public void AddGrade(float grade)
         {
-            this.grades.Add(grade);
-        }
-
-        public void AddPenalty(float penalty)
-        {
-            if (penalty > 0)
+            if (grade >= 0 && grade <= 100)
             {
-                this.grades.Add(-penalty);
+                this.grades.Add(grade);
             }
             else
             {
-                this.grades.Add(penalty);
+                Console.WriteLine("Grade value should be between 0 and 100");
             }
+        }
+
+        public void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("Given string is not a float");
+            }
+        }
+
+        public void AddGrade(char grade)
+        {
+            if (char.IsDigit(grade))
+            {
+                float result = Convert.ToSingle(grade);
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine($"Character {grade} is not a digit");
+            }
+        }
+
+        public void AddGrade(int grade)
+        {
+            float result = Convert.ToSingle(grade);
+            this.AddGrade(result);
+        }
+
+        public void AddGrade(double grade)
+        {
+            float result = Convert.ToSingle(grade);
+            this.AddGrade(result);
+        }
+
+        public void AddGrade(long grade)
+        {
+            float result = Convert.ToSingle(grade);
+            this.AddGrade(result);
         }
 
         public Statistics GetStatistics()
@@ -45,7 +83,7 @@
                 statistics.Average = 0;
                 statistics.Max = 0;
                 statistics.Min = 0;
-            } 
+            }
             else
             {
                 statistics.Average = 0;
