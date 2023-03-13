@@ -33,7 +33,7 @@
             }
             else
             {
-                Console.WriteLine("Grade value should be between 0 and 100");
+                throw new Exception("Grade value should be between 0 and 100");
             }
         }
 
@@ -65,8 +65,7 @@
                         this.grades.Add(20);
                         break;
                     default:
-                        Console.WriteLine("Invalid score value, only A-E and numerical values allowed.");
-                        break;
+                        throw new Exception("Invalid score value, only A-E and numerical values allowed.");
                 }
             }
         }
@@ -93,8 +92,7 @@
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Invalid score value, only A-E and numerical values allowed.");
-                    break;
+                    throw new Exception("Invalid score value, only A-E and numerical values allowed.");
             }
         }
 

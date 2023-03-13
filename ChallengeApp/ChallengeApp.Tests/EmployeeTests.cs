@@ -18,10 +18,17 @@
         {
             // arrange
             var employee = GetEmployee("John", "Smith");
-            employee.AddGrade(100);
-            employee.AddGrade(10);
-            employee.AddGrade(150);
-            employee.AddGrade(-20);
+            try
+            {
+                employee.AddGrade(100);
+                employee.AddGrade(10);
+                employee.AddGrade(150);
+                employee.AddGrade(-20);
+            }
+            catch (Exception)
+            {
+
+            }
 
             // act
             var result = employee.Result;
@@ -67,16 +74,24 @@
         {
             // arrange
             var employee = GetEmployee("John", "Smith");
-            employee.AddGrade("A");
-            employee.AddGrade("B");
-            employee.AddGrade("C");
-            employee.AddGrade("D");
-            employee.AddGrade("E");
-            employee.AddGrade('a');
-            employee.AddGrade('b');
-            employee.AddGrade('c');
-            employee.AddGrade('d');
-            employee.AddGrade('e');
+            try
+            {
+                employee.AddGrade("A");
+                employee.AddGrade("B");
+                employee.AddGrade("C");
+                employee.AddGrade("D");
+                employee.AddGrade("E");
+                employee.AddGrade('a');
+                employee.AddGrade('b');
+                employee.AddGrade('c');
+                employee.AddGrade('d');
+                employee.AddGrade('e');
+                employee.AddGrade('f');
+            }
+            catch (Exception)
+            {
+
+            }
 
             // act
             var result = employee.Result;
