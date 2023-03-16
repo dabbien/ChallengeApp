@@ -3,7 +3,7 @@
 Console.WriteLine("Witamy w programie XYZ do oceny pracowników");
 Console.WriteLine("===========================================");
 Console.WriteLine();
-var employee = new Employee();
+var employee = new Employee("Zenon", "Zenonowicz", "Handlowiec");
 Console.WriteLine("Podaj ocenę pracownika: ");
 var input = Console.ReadLine();
 try
@@ -27,11 +27,10 @@ while (true)
     {
         employee.AddGrade(input);
     }
-    catch(Exception err)
+    catch (Exception err)
     {
         Console.WriteLine($"Exception catched: {err.Message}");
     }
-    
 }
 
 

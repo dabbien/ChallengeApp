@@ -1,22 +1,29 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
-        public Employee(string name, string surname)
+
+        public Employee(string name, string speciality)
+            : base(name)
         {
-            this.Name = name;
-            this.Surname = surname;
+            this.Speciality = speciality;
         }
 
-        public Employee()
+        public Employee(string name, string surname, string speciality)
+            : base(name, surname)
         {
-            this.Name = null;
-            this.Surname = null;
+            this.Speciality = speciality;
         }
 
-        public string? Name { get; private set; }
-        public string? Surname { get; private set; }
+        public Employee(string name, string surname, string sex, string speciality)
+            : base(name, surname, sex)
+        {
+            this.Speciality = speciality;
+        }
+
+        public string Speciality { get; private set; }
+
         public float Result
         {
             get
@@ -45,7 +52,7 @@
             }
             else
             {
-               grade = grade.ToUpper();
+                grade = grade.ToUpper();
 
                 switch (grade)
                 {
@@ -140,7 +147,7 @@
                 statistics.Average /= this.grades.Count;
             }
 
-            switch(statistics.Average)
+            switch (statistics.Average)
             {
                 case var average when average >= 80:
                     statistics.AverageLetter = 'A';
