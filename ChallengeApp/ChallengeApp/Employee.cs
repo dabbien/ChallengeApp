@@ -1,27 +1,18 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : Person
+    public class Employee : IEmployee
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string speciality)
-            : base(name)
-        {
-            this.Speciality = speciality;
-        }
-
         public Employee(string name, string surname, string speciality)
-            : base(name, surname)
         {
+            this.Name = name;
+            this.Surname = surname;
             this.Speciality = speciality;
         }
 
-        public Employee(string name, string surname, string sex, string speciality)
-            : base(name, surname, sex)
-        {
-            this.Speciality = speciality;
-        }
-
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
         public string Speciality { get; private set; }
 
         public float Result
@@ -79,28 +70,8 @@
 
         public void AddGrade(char grade)
         {
-            grade = char.ToUpper(grade);
-
-            switch (grade)
-            {
-                case 'A':
-                    this.grades.Add(100);
-                    break;
-                case 'B':
-                    this.grades.Add(80);
-                    break;
-                case 'C':
-                    this.grades.Add(60);
-                    break;
-                case 'D':
-                    this.grades.Add(40);
-                    break;
-                case 'E':
-                    this.grades.Add(20);
-                    break;
-                default:
-                    throw new Exception("Invalid score value, only A-E and numerical values allowed.");
-            }
+            string result = Convert.ToString(grade);
+            this.AddGrade(result);
         }
 
         public void AddGrade(int grade)

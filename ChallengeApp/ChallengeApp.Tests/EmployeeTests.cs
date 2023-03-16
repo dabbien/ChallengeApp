@@ -6,8 +6,8 @@
         public void GetEmployeeReturnsDifferentReferencesForNewObjects()
         {
             // arrange
-            var employee1 = GetEmployee("John", "Smith");
-            var employee2 = GetEmployee("John", "Smith");
+            var employee1 = GetEmployee("John", "Smith", "seller");
+            var employee2 = GetEmployee("John", "Smith", "seller");
 
             // assert
             Assert.AreNotEqual(employee1, employee2);
@@ -17,7 +17,7 @@
         public void AddGradeAcceptsFloatValuesFrom_0To100()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
             try
             {
                 employee.AddGrade(100);
@@ -41,7 +41,7 @@
         public void AddGradePassedNumbersInStrings_ShouldProperlyParse()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
             employee.AddGrade("1");
             employee.AddGrade("1,4");
 
@@ -56,7 +56,7 @@
         public void AddGradePassedStringsAndChars_ShouldBeCaseInsensitive()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
             employee.AddGrade("A");
             employee.AddGrade("a");
             employee.AddGrade('A');
@@ -73,7 +73,7 @@
         public void AddGradePassedStringsOrChars_A_to_E_ShouldAssignNumericalValue()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
             try
             {
                 employee.AddGrade("A");
@@ -104,7 +104,7 @@
         public void Result_ShouldReturnGradesSum()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
             employee.AddGrade(5.3f);
             employee.AddGrade(6.2f);
 
@@ -119,7 +119,7 @@
         public void ResultWithoutGrades_ShouldReturn0()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
 
             // act
             var result = employee.Result;
@@ -132,7 +132,7 @@
         public void GetStatisticsWithoutGrades_ShouldReturn0()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
 
             // act
             var max = employee.GetStatistics().Max;
@@ -149,7 +149,7 @@
         public void GetStatisticsMin_ShouldReturnMinGrade()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
             employee.AddGrade(6);
             employee.AddGrade(5);
 
@@ -164,7 +164,7 @@
         public void GetStatisticsMax_ShouldReturnMaxGrade()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
             employee.AddGrade(5);
             employee.AddGrade(6);
 
@@ -179,7 +179,7 @@
         public void GetStatisticsAverage_ShouldReturnAverageGrade()
         {
             // arrange
-            var employee = GetEmployee("John", "Smith");
+            var employee = GetEmployee("John", "Smith", "seller");
             employee.AddGrade(5);
             employee.AddGrade(5);
             employee.AddGrade(4);
@@ -195,11 +195,11 @@
         public void GetStatisticsAverageLetter_ShouldReturnProperLetterForGivenResult()
         {
             // arrange
-            var employee1 = GetEmployee("John", "Smith");
-            var employee2 = GetEmployee("John", "Smith");
-            var employee3 = GetEmployee("John", "Smith");
-            var employee4 = GetEmployee("John", "Smith");
-            var employee5 = GetEmployee("John", "Smith");
+            var employee1 = GetEmployee("John", "Smith", "seller");
+            var employee2 = GetEmployee("John", "Smith", "seller");
+            var employee3 = GetEmployee("John", "Smith", "seller");
+            var employee4 = GetEmployee("John", "Smith", "seller");
+            var employee5 = GetEmployee("John", "Smith", "seller");
             employee1.AddGrade(100);
             employee2.AddGrade(79);
             employee3.AddGrade(59);
@@ -222,9 +222,9 @@
 
         }
 
-        private Employee GetEmployee(string name, string surname)
+        private Employee GetEmployee(string name, string surname, string speciality)
         {
-            return new Employee(name, surname);
+            return new Employee(name, surname, speciality);
         }
     }
 }
