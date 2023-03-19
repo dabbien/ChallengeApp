@@ -3,10 +3,14 @@
 Console.WriteLine("Witamy w programie XYZ do oceny pracowników");
 Console.WriteLine("===========================================");
 Console.WriteLine();
-var employee = new Employee("Zenon", "Zenonowicz", "Handlowiec");
+var employee = new EmployeeInFile("Zenon", "Zenonowicz");
 
 Console.WriteLine("Podaj ocenę pracownika: ");
 var input = Console.ReadLine();
+if (input.ToUpper() == "Q")
+{
+    return;
+}
 try
 {
     employee.AddGrade(input);
@@ -33,7 +37,6 @@ while (true)
         Console.WriteLine($"Exception catched: {err.Message}");
     }
 }
-
 
 var statistics = employee.GetStatistics();
 Console.WriteLine($"Najwyższa ocena: {statistics.Max}");

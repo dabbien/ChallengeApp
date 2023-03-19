@@ -1,21 +1,14 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
         private List<float> grades = new List<float>();
-
-        public Employee(string name, string surname, string speciality)
+        public EmployeeInMemory(string name, string surname)
+            : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Speciality = speciality;
         }
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public string Speciality { get; private set; }
-
-        public float Result
+        public override float Result
         {
             get
             {
@@ -23,7 +16,7 @@
             }
         }
 
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
@@ -35,7 +28,7 @@
             }
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -68,31 +61,31 @@
             }
         }
 
-        public void AddGrade(char grade)
+        public override void AddGrade(char grade)
         {
             string result = Convert.ToString(grade);
             this.AddGrade(result);
         }
 
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             float result = Convert.ToSingle(grade);
             this.AddGrade(result);
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             float result = Convert.ToSingle(grade);
             this.AddGrade(result);
         }
 
-        public void AddGrade(long grade)
+        public override void AddGrade(long grade)
         {
             float result = Convert.ToSingle(grade);
             this.AddGrade(result);
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
 
