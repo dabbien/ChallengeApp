@@ -4,6 +4,8 @@
     {
         private const string gradesFileName = "grades.txt";
 
+        public override event GradeAddedDelegate GradeAdded;
+
         public EmployeeInFile(string name, string surname)
             : base(name, surname)
         {

@@ -3,14 +3,18 @@
 Console.WriteLine("Witamy w programie XYZ do oceny pracowników");
 Console.WriteLine("===========================================");
 Console.WriteLine();
-var employee = new EmployeeInFile("Zenon", "Zenonowicz");
+
+var employee = new EmployeeInMemory("euyStachy", "Zenonowicz");
+employee.GradeAdded += EmployeeGradeAdded;
+
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano ocenę");
+}
 
 Console.WriteLine("Podaj ocenę pracownika: ");
 var input = Console.ReadLine();
-if (input.ToUpper() == "Q")
-{
-    return;
-}
+
 try
 {
     employee.AddGrade(input);
