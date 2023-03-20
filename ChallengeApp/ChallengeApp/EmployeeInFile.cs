@@ -11,54 +11,15 @@
         {
         }
 
-        public override float Result
-        {
-            get
-            {
-                return GetGradesListFromFile(gradesFileName).Sum();
-            }
-        }
-
-        private void SaveGradeToFile(float data, string fileName)
-        {
-            using (var writer = File.AppendText(fileName))
-            {
-                writer.WriteLine(data);
-            }
-        }
-
-        private List<float> GetGradesListFromFile(string fileName)
-        {
-            List<float> tempGradesList = new List<float>();
-
-            if (File.Exists(fileName))
-            {
-                using (var reader = File.OpenText(fileName))
-                {
-                    var line = reader.ReadLine();
-                    while (line != null)
-                    {
-                        if (float.TryParse(line, out float result))
-                        {
-                            tempGradesList.Add(result);
-                        }
-                        else
-                        {
-                            throw new Exception($"Invalid grade value read from file: {fileName}");
-                        }
-
-                        line = reader.ReadLine();
-                    }
-                }
-            }
-            return tempGradesList;
-        }
-
         public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
                 this.SaveGradeToFile(grade, gradesFileName);
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -121,6 +82,48 @@
         {
             float result = Convert.ToSingle(grade);
             this.AddGrade(result);
+        }
+        public override float Result
+        {
+            get
+            {
+                return GetGradesListFromFile(gradesFileName).Sum();
+            }
+        }
+
+        private void SaveGradeToFile(float data, string fileName)
+        {
+            using (var writer = File.AppendText(fileName))
+            {
+                writer.WriteLine(data);
+            }
+        }
+
+        private List<float> GetGradesListFromFile(string fileName)
+        {
+            List<float> tempGradesList = new List<float>();
+
+            if (File.Exists(fileName))
+            {
+                using (var reader = File.OpenText(fileName))
+                {
+                    var line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        if (float.TryParse(line, out float result))
+                        {
+                            tempGradesList.Add(result);
+                        }
+                        else
+                        {
+                            throw new Exception($"Invalid grade value read from file: {fileName}");
+                        }
+
+                        line = reader.ReadLine();
+                    }
+                }
+            }
+            return tempGradesList;
         }
 
         public override Statistics GetStatistics()
