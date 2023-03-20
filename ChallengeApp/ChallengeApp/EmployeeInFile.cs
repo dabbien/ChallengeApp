@@ -40,19 +40,22 @@
                 switch (grade)
                 {
                     case "A":
-                        this.SaveGradeToFile(100, gradesFileName);
+                        this.AddGrade(100);
                         break;
                     case "B":
-                        this.SaveGradeToFile(80, gradesFileName);
+                        this.AddGrade(80);
                         break;
                     case "C":
-                        this.SaveGradeToFile(60, gradesFileName);
+                        this.AddGrade(60);
                         break;
                     case "D":
-                        this.SaveGradeToFile(40, gradesFileName);
+                        this.AddGrade(40);
                         break;
                     case "E":
-                        this.SaveGradeToFile(20, gradesFileName);
+                        this.AddGrade(20);
+                        break;
+                    case "F":
+                        this.AddGrade(0);
                         break;
                     default:
                         throw new Exception("Invalid score value, only A-E and numerical values allowed.");
@@ -83,13 +86,6 @@
             float result = Convert.ToSingle(grade);
             this.AddGrade(result);
         }
-        public override float Result
-        {
-            get
-            {
-                return GetGradesListFromFile(gradesFileName).Sum();
-            }
-        }
 
         private void SaveGradeToFile(float data, string fileName)
         {
@@ -101,7 +97,7 @@
 
         private List<float> GetGradesListFromFile(string fileName)
         {
-            List<float> tempGradesList = new List<float>();
+            var tempGradesList = new List<float>();
 
             if (File.Exists(fileName))
             {
@@ -118,7 +114,6 @@
                         {
                             throw new Exception($"Invalid grade value read from file: {fileName}");
                         }
-
                         line = reader.ReadLine();
                     }
                 }
@@ -129,49 +124,10 @@
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            var gradesSnapshot = this.GetGradesListFromFile(gradesFileName);
-
-            if (gradesSnapshot.Count == 0)
+            foreach (var grade in GetGradesListFromFile(gradesFileName))
             {
-                statistics.Average = 0;
-                statistics.Max = 0;
-                statistics.Min = 0;
+                statistics.AddGrade(grade);
             }
-            else
-            {
-                statistics.Average = 0;
-                statistics.Max = float.MinValue;
-                statistics.Min = float.MaxValue;
-
-                foreach (var grade in gradesSnapshot)
-                {
-                    statistics.Max = Math.Max(statistics.Max, grade);
-                    statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Average += grade;
-                }
-
-                statistics.Average /= gradesSnapshot.Count;
-            }
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
-
             return statistics;
         }
     }

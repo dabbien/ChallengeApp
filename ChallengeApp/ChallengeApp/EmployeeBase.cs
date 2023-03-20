@@ -13,7 +13,6 @@
 
         public string Name { get; private set; }
         public string Surname { get; private set; }
-        public abstract float Result { get; }
 
         public abstract void AddGrade(float grade);
         public abstract void AddGrade(string grade);
